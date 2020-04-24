@@ -1,0 +1,36 @@
+{
+		"name": "pingfan",                           
+        "script": "index.js",                    
+        "cwd": "./",                             
+        "args": "",                            
+        "interpreter": "",                   
+        "interpreter_args": "",                 
+        "watch": true,                          
+        "ignore_watch": [                    
+            "node_modules",
+            "logs"
+        ],
+        "exec_mode": "cluster_mode",                                      
+        "max_memory_restart": 8,                   
+        "error_file": "./logs/app-err.log",        
+        "out_file": "./logs/app-out.log",           
+        "merge_logs": true,                        
+        "log_date_format": "YYYY-MM-DD HH:mm:ss",                          
+        "max_restarts": 30,                        
+        "autorestart": true,                        
+        "cron_restart": "",                                              
+        "env": {
+        	"PORT": 3000,
+           "NODE_ENV": "prod",               
+           "REMOTE_ADDR": ""              
+        },
+        "env_dev": {
+        	"PORT": 3000,
+            "NODE_ENV": "dev",             
+            "REMOTE_ADDR": ""
+        },
+        "env_test": {                              
+            "NODE_ENV": "test",
+            "REMOTE_ADDR": ""
+        }
+}
