@@ -4,7 +4,7 @@ import { controllerVersion } from '../config/config'
 const Tag = tags(['注册']);
 
 
-@prefix(`/${controllerVersion}/orization/signin`)
+@prefix(`/${controllerVersion}/block`)
 export default class Signin{
     @request('post', '/signin') //路由和请求方式
     @summary('注册')

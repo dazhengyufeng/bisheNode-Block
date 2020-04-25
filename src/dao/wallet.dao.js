@@ -2,9 +2,9 @@ import wallet from '../model/wallet'
 
 
 // 添加用户钱包
-export function newUserWallet({ userId }){
+export function newUserWallet(userId){
     return wallet.create({
-        userId: userId,
+        userId,
         account: 0
     })
 }

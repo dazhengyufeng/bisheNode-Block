@@ -3,7 +3,7 @@ import transaction from '../model/transaction'
 
 
 // 添加交易
-export function newUserWallet({ senderId,sender,recipient,amount }){
+export function newTransaction({ senderId,sender,recipient,amount }){
     return transaction.create({
         senderId,
         sender,

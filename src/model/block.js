@@ -6,7 +6,8 @@ export default mysql.defineModel('block',{
     // 主键索引
     index: {
         primaryKey: true,
-        type:sequelize.INTEGER
+        type:sequelize.INTEGER,
+        autoIncrement: true,
     },
     // 上一个区块的hash
     previousHash: {

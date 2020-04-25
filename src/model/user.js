@@ -6,18 +6,15 @@ export default mysql.defineModel('user',{
     // 主键id
     id: {
         primaryKey: true,
-        type:sequelize.INTEGER
+        type:sequelize.INTEGER,
+        autoIncrement: true,
     },
     // 用户名
     userName: {
         type:sequelize.STRING
     },
     // 密码
-    passWord: {
+    password: {
         type:sequelize.STRING
-    },
-    // 交易标识
-    identification: {
-        type:sequelize.STRING
-    },
+    }
 })

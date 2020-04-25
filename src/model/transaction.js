@@ -2,11 +2,12 @@ import mysql from "../config/application.conf"
 const sequelize = require('sequelize')
 
 // 交易表
-export default mysql.defineModel('user',{
+export default mysql.defineModel('transaction',{
     // 主键id
     id: {
         primaryKey: true,
-        type:sequelize.INTEGER
+        type:sequelize.INTEGER,
+        autoIncrement: true,
     },
     // 发送人Id
     senderId: {

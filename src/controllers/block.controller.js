@@ -44,15 +44,19 @@ export default class BlockBus{
     @request('post', '/transaction') //路由和请求方式
     @summary('交易')
     @Tag
-    @body({userName:{required:true, type:String},password:{required:true, type:String}})//请求体格式
+    @body({senderId:{required:true, type:String},sender:{required:true, type:String}})//请求体格式
     static async transaction(ctx){
         let {
-            //账号
-            userName,
-            //密码
-            password
+            // 发送人id
+            senderId,
+            // 发送人
+            sender,
+            // 接收人
+            recipient,
+            // 总数
+            amount
          } = ctx.request.body
-        await Login.userSignin({userName, password})
+        await Block.userSignin({senderId, sender,recipient,amount})
         ctx.rest('注册成功')
     }
 

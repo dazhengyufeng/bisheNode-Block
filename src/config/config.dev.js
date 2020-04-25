@@ -19,4 +19,8 @@ export const sequelize = new Sequelize(config.database, config.username, config.
     }
 });
 
+sequelize.sync().then(function(result){
+   console.log('数据库模型同步成功')
+})
+
 export const localPath = 'localhost:3000'

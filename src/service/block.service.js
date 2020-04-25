@@ -2,6 +2,7 @@
 import { getBlockChain, addBlock, blockDetail } from '../dao/block.dao'
 import { findNotPackTransaction , updataNotPackTransaction  } from '../dao/transaction.dao'
 import { findUserWallet , updateUserWallet  } from '../dao/wallet.dao'
+import { getLoginUser, newUserSignin, queryUserNameIs } from '../dao/userInfo.dao'
 
 const {
     getLength,
@@ -94,6 +95,15 @@ export default class BlockService{
     static async getBlockChain(data){
       // 获取区块链
       let blockInfo = await getBlockChain(data)
+      return blockInfo;
+    }   
+
+    // 交易
+    static async transaction({senderId, sender,recipient,amount}){
+      // 查询发送人是否存在
+      await queryUserNameIs({ userName:sender })
+      // 交易
+      let blockInfo = await newTransaction({senderId, sender,recipient,amount})
       return blockInfo;
     }
 }

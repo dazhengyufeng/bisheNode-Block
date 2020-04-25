@@ -6,7 +6,8 @@ export default mysql.defineModel('wallet',{
     // 主键id
     id: {
         primaryKey: true,
-        type:sequelize.INTEGER
+        type:sequelize.INTEGER,
+        autoIncrement: true,
     },
     // 用户id
     userId: {
