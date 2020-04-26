@@ -12,16 +12,14 @@ export default class BlockBus{
     @request('post', '/myWallet') //路由和请求方式
     @summary('我的钱包')
     @Tag
-    @body({userName:{required:true, type:String},password:{required:true, type:String}})//请求体格式
+    @body({senderId:{required:true}})//请求体格式
     static async myWallet(ctx){
         let {
-            //账号
-            userName,
-            //密码
-            password
+            // 用户id
+            senderId
          } = ctx.request.body
-        await Login.userSignin({userName, password})
-        ctx.rest('注册成功')
+        let data = await Block.getMyWallet({ senderId })
+        ctx.rest(data)
     }
 
     // 获取区块链列表
@@ -56,55 +54,30 @@ export default class BlockBus{
             // 总数
             amount
          } = ctx.request.body
-        await Block.userSignin({senderId, sender,recipient,amount})
-        ctx.rest('注册成功')
+        let data = await Block.transaction({senderId, sender,recipient,amount})
+        ctx.rest(data)
     }
 
     // 区块列表
-    @request('post', '/blockList') //路由和请求方式
+    @request('get', '/blockList') //路由和请求方式
     @summary('区块列表')
     @Tag
-    @body({userName:{required:true, type:String},password:{required:true, type:String}})//请求体格式
     static async blockList(ctx){
-        let {
-            //账号
-            userName,
-            //密码
-            password
-         } = ctx.request.body
-        await Login.userSignin({userName, password})
-        ctx.rest('注册成功')
-    }
-
-    // 查看单独的节点
-    @request('post', '/findBlock') //路由和请求方式
-    @summary('查看单独的节点')
-    @Tag
-    @body({userName:{required:true, type:String},password:{required:true, type:String}})//请求体格式
-    static async findBlock(ctx){
-        let {
-            //账号
-            userName,
-            //密码
-            password
-         } = ctx.request.body
-        await Login.userSignin({userName, password})
-        ctx.rest('注册成功')
+        let list = await Block.getBlockChain()
+        console.log(list,'数据')
+        ctx.rest(list)
     }
 
     // 挖矿
     @request('post', '/mining') //路由和请求方式
     @summary('挖矿')
     @Tag
-    @body({userName:{required:true, type:String},password:{required:true, type:String}})//请求体格式
+    @body({userId:{required:true, type:String}})//请求体格式
     static async mining(ctx){
         let {
-            //账号
-            userName,
-            //密码
-            password
+            userId
          } = ctx.request.body
-        await Login.userSignin({userName, password})
-        ctx.rest('注册成功')
+        let data = await Block.mining({ userId })
+        ctx.rest(data)
     }
 }

@@ -21,10 +21,11 @@ export function findUserWallet({ userId }){
 }
 
 // 修改用户钱包余额
-export function updateUserWallet({ count }){
-    return wallet.update(count, {
+export function updateUserWallet({ account,userId }){
+    console.log(account,userId,'修改的数据')
+    return wallet.update( { account }, {
         where:{
-            userId:userId
-        },
+            userId
+        }
     })
 }

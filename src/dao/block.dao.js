@@ -23,5 +23,7 @@ export function getBlockDetail({userName, password}) {
 
 // 获取区块链
 export function getBlockChain(){
-    return block.findAll({})
+    return block.findAll({
+        attributes: ['index','previousHash','timestamp','hash'],
+    })
 }
